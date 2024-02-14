@@ -10,9 +10,18 @@ export default function Form() {
       description: formData.get("Description") as string,
       price: parseFloat(formData.get("Price") as string),
     };
+    if (!name) {
+      return {
+        name,
+        errors: {
+          name: "Name is required",
+        },
+      };
+    }
     console.log(formTableData);
     await api.products.create.mutate(formTableData);
   }
+
   const options = {
     onSuccess: () => {
       console.log("Product has been created");

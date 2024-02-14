@@ -9,6 +9,26 @@ export const productsRouter = createTRPCRouter({
   list: publicProcedure.query(({ ctx }) => {
     return ctx.db.product.findMany();
   }),
+  // findUniqueProduct: publicProcedure.query(({ ctx, input }) => {
+  //   return ctx.db.product.findUnique({
+  //     where: {
+  //       id: input.id,
+  //     },
+  //   });
+  // }),
+  findUniqueProduct: publicProcedure
+    .input(
+      z.object({
+        productId: z.string(),
+      }),
+    )
+    .query(({ ctx, input }) => {
+      return ctx.db.product.findMany({
+        where: {
+          id: input.productId,
+        },
+      });
+    }),
   create: protectedProcedure
     .input(
       z.object({

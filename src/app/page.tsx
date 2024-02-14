@@ -17,7 +17,7 @@ export default async function Home() {
           Welcome to your dashboard
         </h1>
         <AddItem />
-        <ProductList />
+        <ProductList  />
       </main>
     </>
   );
