@@ -4,7 +4,6 @@ import { api } from "~/trpc/server";
 
 export default async function ProductList() {
   const products = await api.products.list.query();
-
   return (
     <div className="">
       <h1>Product</h1>

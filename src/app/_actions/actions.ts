@@ -18,6 +18,17 @@ export async function createProduct(formData: FormData) {
   return inputProductData;
 }
 
+export async function likeProduct(productId: string) {
+  const options = {
+    onSuccess: () => {
+      console.log("Product has been liked");
+    },
+  };
+  await api.like.likeProduct.mutate({ productId });
+  console.log(options);
+  revalidatePath("/");
+}
+
 export async function Product(
   name: string,
   description: string,

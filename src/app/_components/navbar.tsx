@@ -13,6 +13,9 @@ export default function Navbar({ session }: { session: unknown }) {
         <Link href="/contact" className="mr-4">
           Contact
         </Link>
+        <Link href="/products" className=" mr-4 font-bold">
+          Products
+        </Link>
         <Link
           href={session ? "/api/auth/signout" : "/api/auth/signin"}
           className="font-bold"
